@@ -12,6 +12,7 @@ void SLL_AppendNode(Node** Head, Node* NewNode);
 Node* SLL_GetNodeAt(Node* Head, int Location);
 void SLL_DistroyNode(Node* Node);
 void SLL_RemoveNode(Node** Head, Node* Remove);
+int SLL_GetNodeCount(Node** Head);
 
 int main(void)
 {
@@ -35,6 +36,9 @@ int main(void)
     SLL_RemoveNode(&List, MyNode);
     SLL_DistroyNode(MyNode);
     
+
+    int nodeCount = SLL_GetNodeCount(&List);
+    printf("노드의 개수 :: %d\n", nodeCount);
 
     return 0;
 }
@@ -102,4 +106,17 @@ void SLL_RemoveNode(Node** Head, Node* Remove)
         }
         
     }
+}
+
+int SLL_GetNodeCount(Node** Head)
+{
+    Node* Current = *Head;
+
+    int count = 0;
+    while(Current != NULL)
+    {
+        Current = Current->nextNode;
+        count++;
+    }
+    return count;
 }
