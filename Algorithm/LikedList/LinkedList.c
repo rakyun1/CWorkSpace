@@ -11,7 +11,7 @@ Node* SLL_CreateNode(ElementType NewData)
 }
 
 /* 노드 소멸 */
-void SLL_DistroyNode(Node* Node)
+void SLL_DestroyNode(Node* Node)
 {
     free(Node);
 }
@@ -54,10 +54,26 @@ void SLL_InsertNewHead(Node** Head, Node* NewHead)
     }
 }
 
-void SLL_InsertBefore(Node* Current, Node* NewNode)
+void SLL_InsertBefore(Node** Head, Node* Current, Node* NewNode)
 {
-    NewNode = Current;
-    NewNode->NextNode = Current;
+    if (*Head == NULL || *Head == Current)
+    {
+        NewNode->NextNode = Current;
+        *Head = NewNode;
+    } else {
+        Node* Temp = *Head;
+        while(Temp != NULL && Temp->NextNode != Current)
+        {
+            Temp = Temp->NextNode;
+        }
+        if (Temp != NULL)
+        {
+            Temp->NextNode = NewNode;
+            NewNode->NextNode = Current;
+        }
+        
+    }
+    
 }
 
 /* 노드 제거 */
@@ -82,23 +98,23 @@ void SLL_RemoveNode(Node** Head, Node* Remove)
     }
 }
 
-void SLL_DestroyALLNodes(Node* List)
+void SLL_DestroyALLNodes(Node** List)
 {
-    Node* Current;
-    while(1)
+    Node* Current = *List;
+    if (Current->NextNode == NULL)
     {
-        if (List->NextNode != NULL)
-        {
-            Current = List;
-            List = List->NextNode;
-            free(Current);
-        }
-        else
-        {
-            free(List);
-            break;
-        }
+        free(Current);
+        return;
     }
+    
+    Node* Next = Current->NextNode;
+    while(Next != NULL) {
+        free(Current);
+        Current = Next;
+        Next = Next->NextNode;
+    }
+    free(Current);
+    
 }
 
 /* 노드 탐색 */
