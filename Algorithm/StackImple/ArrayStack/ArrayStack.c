@@ -18,35 +18,33 @@ void AS_DestroyStack(ArrayStack* Stack)
     free(Stack);
 }
 
-void AS_Push(ArrayStack* Stack, ElementType Data)
+void AS_Push(ArrayStack** Stack, ElementType Data)
 {
-    int Position = Stack->Top;
-    if(AS_IsFull(Stack))
+    int Position = (*Stack)->Top;
+    if(AS_IsFull(*Stack))
     {
-        int currentCapacity = Stack->Capacity;
-        currentCapacity += currentCapacity * 0.3;
-        Stack->Capacity = currentCapacity;
-
+        (*Stack)->Capacity += (*Stack)->Capacity * 0.3;
+        (*Stack)->Nodes = (Node*)malloc(sizeof(Node)*(*Stack)->Capacity);
         printf("\n\n스택의 용량이 초과되었으므로 용량이 30프로 올라갑니다.\n\n");
     }
 
-    Stack->Nodes[Position].Data = Data;
-    Stack->Top++;
+    (*Stack)->Nodes[Position].Data = Data;
+    (*Stack)->Top++;
 }
 
-ElementType AS_Pop(ArrayStack* Stack)
+ElementType AS_Pop(ArrayStack** Stack)
 {
-    int Position = --(Stack->Top);
-    
-    if (Position < Stack->Capacity * 0.7)
-    {
-        Stack->Capacity -= Stack->Capacity * 0.3;
+    int Position = --((*Stack)->Top);
 
+    if (Position < (*Stack)->Capacity * 0.7)
+    {
+        (*Stack)->Capacity -= (*Stack)->Capacity * 0.3;
+        (*Stack)->Nodes = (Node*)malloc(sizeof(Node)*(*Stack)->Capacity);
         printf("\n\n스택의 용량이 70프로 미만이므로 용량이 30프로 줄어듭니다.\n\n");
     }
     
 
-    return Stack->Nodes[Position].Data;
+    return (*Stack)->Nodes[Position].Data;
 }
 
 ElementType AS_Top(ArrayStack* Stack)
