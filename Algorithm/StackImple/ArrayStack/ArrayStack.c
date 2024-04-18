@@ -23,8 +23,11 @@ void AS_Push(ArrayStack* Stack, ElementType Data)
     int Position = Stack->Top;
     if(AS_IsFull(Stack))
     {
-        printf("저장 용량 초과 !!!\n\n");
-        return;
+        int currentCapacity = Stack->Capacity;
+        currentCapacity += currentCapacity * 0.3;
+        Stack->Capacity = currentCapacity;
+
+        printf("\n\n스택의 용량이 초과되었으므로 용량이 30프로 올라갑니다.\n\n");
     }
 
     Stack->Nodes[Position].Data = Data;
@@ -34,6 +37,14 @@ void AS_Push(ArrayStack* Stack, ElementType Data)
 ElementType AS_Pop(ArrayStack* Stack)
 {
     int Position = --(Stack->Top);
+    
+    if (Position < Stack->Capacity * 0.7)
+    {
+        Stack->Capacity -= Stack->Capacity * 0.3;
+
+        printf("\n\n스택의 용량이 70프로 미만이므로 용량이 30프로 줄어듭니다.\n\n");
+    }
+    
 
     return Stack->Nodes[Position].Data;
 }

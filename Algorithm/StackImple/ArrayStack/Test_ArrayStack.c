@@ -33,6 +33,7 @@ int main(void)
     if (AS_IsFull(Stack))
     {
         printf("스택 용량이 꽉 찼습니다.\n");
+        printf("%d\n", Stack->Capacity);
     }
     else
     {
@@ -49,6 +50,7 @@ int main(void)
     if (AS_IsFull(Stack))
     {
         printf("스택 용량이 꽉 찼습니다.\n");
+        printf("현재 스택의 용량 :: %d\n", Stack->Capacity);
     }
     else
     {
@@ -62,4 +64,5 @@ int main(void)
 
     AS_DestroyStack(Stack);
     return 0;
+    
 }
