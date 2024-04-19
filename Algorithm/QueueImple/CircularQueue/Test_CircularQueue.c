@@ -31,5 +31,6 @@ int main(void)
         printf("Dequeue :: %d, Front :: %d, Rear :: %d\n", CQ_DeQueue(Queue), Queue->Front, Queue->Rear);
     }
     CQ_DestroyQueue(Queue);
+    
     return 0;
 }
