@@ -29,10 +29,10 @@ int Partition(int DataSet[], int Left, int Right)
             Swap(&DataSet[Left], &DataSet[Right]);
         }
         
-        
     }
 
-    Swap(&DataSet[First], &DataSet[Right]);
+    Swap(&DataSet[First], &DataSet[Right]); // 기준이 되는 피봇의 주소 값과, 왼쪽 데이터 집합의 오른쪽 끝 요소를 교환한다.
+                                            // 왼쪽 데이터 집합은 모두 피봇 보다 크기가 작기에 왼쪽 데이터의 가장 오른쪽 자리가 피봇의 자리이다.
 
     return Right;
 }
@@ -43,7 +43,7 @@ void QuickSort(int DataSet[], int Left, int Right)
     {
         int index = Partition(DataSet, Left, Right);
 
-        QuickSort(DataSet, Left, index - 1);
+        QuickSort(DataSet, Left, index - 1); // Partition 함수에서 Right 변수를 리턴하는데 이는 왼쪽 정렬의 오른쪽 끝 인덱스이고 Left = 0 부터 Right까지만 왼쪽 데이터 집합으로 나누어 재귀 함수를 호출한다.
         QuickSort(DataSet, index + 1, Right);
     }
     
