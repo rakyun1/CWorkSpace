@@ -9,6 +9,7 @@ void Swap(int* A, int* B)
 
 int Partition(int DataSet[], int Left, int Right)
 {
+    // 앞의 3개의 값 중에서 중간 값으로 피봇을 설정
     int First = Left;
     int Pivot = DataSet[First];
 
@@ -39,6 +40,7 @@ int Partition(int DataSet[], int Left, int Right)
 
 void QuickSort(int DataSet[], int Left, int Right)
 {
+    // 재귀 함수 대신 순환문 사용
     if (Left < Right)
     {
         int index = Partition(DataSet, Left, Right);

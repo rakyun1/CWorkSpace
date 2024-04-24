@@ -3,6 +3,7 @@
 
 void InsertionSort(int DataSet[], int Length)
 {
+    // 배열이 아닌 더블 링크드 리스트로 구현
     int i = 0;
     int j = 0;
     int value = 0;
