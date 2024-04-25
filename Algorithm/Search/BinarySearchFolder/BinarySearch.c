@@ -49,10 +49,22 @@ int main(void)
 {
     int Length = sizeof DataSet / sizeof DataSet[0];
     int i = 0;
+    Score target;
     Score* found = NULL;
     qsort((void*)DataSet, Length, sizeof(Score), CompareScore);
 
     found = BinarySearch(DataSet, Length, 671.78);
+
+    target.number = 0;
+    target.score = 671.78;
+
+    found = bsearch(
+        (void*)&target,
+        (void*)DataSet,
+        Length,
+        sizeof(Score),
+        CompareScore
+    );
 
     if (found == NULL)
     {
