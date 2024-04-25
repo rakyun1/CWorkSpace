@@ -56,7 +56,7 @@ int main(void)
     found = BinarySearch(DataSet, Length, 671.78);
 
     target.number = 0;
-    target.score = 671.78;
+    target.score = 941.95;
 
     found = bsearch(
         (void*)&target,
@@ -68,7 +68,7 @@ int main(void)
 
     if (found == NULL)
     {
-        printf("해당 점수의 학생을 찾을 수 없습니다.");
+        printf("해당 점수의 학생을 찾을 수 없습니다.\n");
     }
     else
     {
