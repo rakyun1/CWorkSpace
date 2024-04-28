@@ -11,7 +11,10 @@ int checkWord(char* word)
     }
     printf("\n");
 
+
+
     return 0;
+
 }
 
 int main(void)
