@@ -4,6 +4,7 @@
     "stdlib.h": "c",
     "string.h": "c",
     "__bit_reference": "c",
-    "bitset": "c"
+    "bitset": "c",
+    "cstring": "c"
   }
 }
