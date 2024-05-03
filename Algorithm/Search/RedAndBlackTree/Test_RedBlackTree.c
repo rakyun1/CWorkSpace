@@ -76,7 +76,6 @@ int main( void )
         }
 
         printf("\n");
-
     }
 
     RBT_DestroyTree( Tree );
