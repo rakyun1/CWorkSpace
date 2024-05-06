@@ -15,7 +15,7 @@ int searchGaro(int** board, int count, int y, int x)
         }
         else
         {
-            
+
         }
     }
     
@@ -107,6 +107,7 @@ int main(void)
         }
 
     }
+    
 
     // printf("\n");
     // for (i = 0; i < boardSize; i++)
