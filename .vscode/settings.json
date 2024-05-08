@@ -5,6 +5,15 @@
     "string.h": "c",
     "__bit_reference": "c",
     "bitset": "c",
-    "cstring": "c"
+    "cstring": "c",
+    "cmath": "c",
+    "locale": "c",
+    "limits": "c",
+    "ratio": "c",
+    "algorithm": "c",
+    "__locale": "c",
+    "string": "c",
+    "string_view": "c",
+    "stdbool.h": "c"
   }
 }
