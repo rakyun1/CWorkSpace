@@ -14,6 +14,9 @@
     "__locale": "c",
     "string": "c",
     "string_view": "c",
-    "stdbool.h": "c"
+    "stdbool.h": "c",
+    "topologicalsort.h": "c",
+    "linkedlist.h": "c",
+    "graph.h": "c"
   }
 }
