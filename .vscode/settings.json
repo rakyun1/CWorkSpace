@@ -17,6 +17,7 @@
     "stdbool.h": "c",
     "topologicalsort.h": "c",
     "linkedlist.h": "c",
-    "graph.h": "c"
+    "graph.h": "c",
+    "mst.h": "c"
   }
 }
