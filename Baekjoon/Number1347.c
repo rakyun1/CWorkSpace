@@ -4,13 +4,13 @@
 
 // int map[150][150];
 
-int map[20][20];
+int map[60][60];
 
 /* way == 0 :: 아래쪽, way == 1 :: 왼쪽, way == 2 :: 오른쪽, way == 3 :: 위쪽*/
 int way = 0;
 
 // int currentPoint[2] = {75,75};
-int currentPoint[2] = {10,10};
+int currentPoint[2] = {30,30};
 
 void move(char currentQuery)
 {  
@@ -31,7 +31,7 @@ void move(char currentQuery)
         {
             way = 0;
         }
-        else if (way == 3)
+        else
         {
             way = 2;
         }
@@ -52,7 +52,7 @@ void move(char currentQuery)
         {
             way = 3;
         }
-        else if (way == 3)
+        else
         {
             way = 1;
         }
@@ -95,9 +95,9 @@ int main(void)
 
     scanf("%d", &inputCount);
     
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 60; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < 60; j++)
         {
             map[i][j] = 1;
         }
@@ -105,7 +105,7 @@ int main(void)
     }
 
     // map[75][75] = 0;
-    map[10][10] = 0;
+    map[30][30] = 0;
 
     scanf("%s", query);
 
@@ -116,15 +116,76 @@ int main(void)
         move(query[i]);        
     }
 
-    printf("\n\n-------------------------------------------------\n\n");
-    for (int i = 0; i < 20; i++)
+
+
+    int minY = 0;
+    int minX = 0;
+    int yLength = 0;
+    int xLength = 0;
+
+    for (int i = 0; i < 60; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < 60; j++)
         {
-            printf("%d ", map[i][j]);
+            if (map[i][j] == 0 && minY == 0 && minX == 0)
+            {
+                minY = i;
+                minX = j;
+            }
+            else if (map[i][j] == 0 && (minY != 0 || minX != 0))
+            {
+                yLength = i - minY;
+                int currentXLength = abs(j - minX);
+                if (xLength < currentXLength)
+                {
+                    xLength = currentXLength;
+                }
+                
+                if (minX > j)
+                {
+                    minX = j;
+                }
+                
+            }
+            
+        }
+    }
+
+    char answer[yLength + 1][xLength + 1];
+    for (i = 0; i < yLength + 1; i++)
+    {
+        for(int j = 0; j < xLength + 1; j++)
+        {
+            answer[i][j] = '#';
+        }
+
+    }
+
+
+
+    for (i = minY; i < minY + yLength + 1; i++)
+    {
+        for(int j = minX; j < minX + xLength + 1; j++)
+        {
+            if (map[i][j] == 0)
+            {
+                answer[i - minY][j - minX] = '.';
+            }
+            
+        }
+
+    }
+
+    for (i = 0; i < yLength + 1; i++)
+    {
+        for(int j = 0; j < xLength + 1; j++)
+        {
+            printf("%c", answer[i][j]);
         }
         printf("\n");
+
     }
+    
 
     return 0;
 }
