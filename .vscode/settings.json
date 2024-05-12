@@ -18,6 +18,8 @@
     "topologicalsort.h": "c",
     "linkedlist.h": "c",
     "graph.h": "c",
-    "mst.h": "c"
+    "mst.h": "c",
+    "bit": "c",
+    "complex": "c"
   }
 }
