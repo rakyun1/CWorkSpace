@@ -14,6 +14,7 @@ void GetChange(int Price, int Pay, int CoinUnits[], int Change[], int Size)
         ChangeAmount = ChangeAmount - (CoinUnits[i] * Change[i]);
     }
     
+    
 }
 
 int CountCoins(int Amount, int CoinUnit)
