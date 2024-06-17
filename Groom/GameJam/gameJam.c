@@ -36,23 +36,18 @@ int main() {
         }
 	}
 
-    groomCount = getMoveCount(map, boardSize, groomY, groomX);
+    groomCount = getMoveCount((MoveInfo **)map, boardSize, groomY, groomX);
 
-    playerCount = getMoveCount(map, boardSize, playerY, playerX);
+    playerCount = getMoveCount((MoveInfo **)map, boardSize, playerY, playerX);
 
-    for (int i = 0; i < boardSize; i++) {
-        for (int j = 0; j < boardSize; j++) {
-            printf("%d, %c ", map[i][j].moveCount, map[i][j].moveWay );
-        }
-        printf("\n");
-	}
+	printf("groom : %d\n", groomCount);
+    printf("player : %d\n", playerCount);
 	
-	scanf("%s",input);
 	return 0;
 }
 
 
-int getMoveCount(MoveInfo **map, int boardSize, int currentY, int currentX)
+int getMoveCount(struct Move **map, int boardSize, int currentY, int currentX)
 {
     int moveCount, moveWay;
     int visited[boardSize][boardSize];

@@ -1,0 +1,8 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/rock/Desktop/Programing/CWorkSpace/Groom/GameJam/gameJam'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000037EC, symSize: 0x2B8 }
+  - { offsetInCU: 0x79, offset: 0x79, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000037EC, symSize: 0x2B8 }
+  - { offsetInCU: 0x182, offset: 0x182, size: 0x8, addend: 0x0, symName: _getMoveCount, symObjAddr: 0x2B8, symBinAddr: 0x100003AA4, symSize: 0x490 }
+...
