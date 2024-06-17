@@ -3,6 +3,7 @@
 
 int main(void)
 {
+    //asdfsasdsadf
     int studentNumber[23];
     memset(studentNumber, 0, 23 * sizeof(int));
 
