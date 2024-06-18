@@ -8,7 +8,7 @@ typedef struct Move {
 } MoveInfo;
 
 
-int getMoveCount(struct Move **map, int boardSize, int currentY, int currentX);
+int getMoveCount(MoveInfo **board, int boardSize, int currentY, int currentX);
 
 int main() {
 	int boardSize, 
@@ -22,9 +22,9 @@ int main() {
 	scanf("%d", &playerY);
 	scanf("%d", &playerX);
 	
-	MoveInfo **map = (MoveInfo **)malloc(boardSize * sizeof(MoveInfo *));
+	MoveInfo **board = (MoveInfo **)malloc(boardSize * sizeof(MoveInfo *));
 	for (int i = 0; i < boardSize; i++) {
-		map[i] = (MoveInfo *)malloc(boardSize * sizeof(MoveInfo));
+		board[i] = (MoveInfo *)malloc(boardSize * sizeof(MoveInfo));
 	}
     
     char *input = (char*)malloc(3 * sizeof(char));
@@ -33,14 +33,14 @@ int main() {
 	for (int i = 0; i < boardSize; i++) {
         for (int j = 0; j < boardSize; j++) {
             scanf("%s", input);
-            map[i][j].moveCount = atoi(input);
-            map[i][j].moveWay = input[strlen(input) - 1];
+            board[i][j].moveCount = atoi(input);
+            board[i][j].moveWay = input[strlen(input) - 1];
         }
 	}
 
-    goormCount = getMoveCount((MoveInfo **)map, boardSize, goormY - 1, goormX - 1);
+    goormCount = getMoveCount(board, boardSize, goormY - 1, goormX - 1);
 
-    playerCount = getMoveCount((MoveInfo **)map, boardSize, playerY - 1, playerX - 1);
+    playerCount = getMoveCount(board, boardSize, playerY - 1, playerX - 1);
 
 	if (goormCount > playerCount) {
         printf("goorm %d\n", goormCount);
@@ -53,106 +53,69 @@ int main() {
 }
 
 
-int getMoveCount(struct Move **map, int boardSize, int currentY, int currentX)
+int getMoveCount(MoveInfo **board, int boardSize, int currentY, int currentX)
 {
-    int moveCount; 
-    char moveWay;
+    int moveCount;
     int visited[boardSize][boardSize];
+    int moveWay[2];
 
-    for (int i = 0; i < boardSize; i++) {
-        for (int j = 0; j < boardSize; j++) {
-            visited[i][j] = 0;
-        }
-    }
+    memset(visited, 0, sizeof(int) * boardSize * boardSize);
+    // for (int i = 0; i < boardSize; i++) {
+    //     for (int j = 0; j < boardSize; j++) {
+    //         visited[i][j] = 0;
+    //     }
+    // }
 
     
-
     int isEnd = 1;
     int result = 0;
 
     while (isEnd) {
-        moveCount = map[currentY][currentX].moveCount;
-        moveWay = map[currentY][currentX].moveWay; 
+        moveCount = board[currentY][currentX].moveCount;
 
-        if (moveWay == 'U')
+        if (board[currentY][currentX].moveWay == 'U')
         {
-            
-            while (moveCount > 0) {
-                visited[currentY][currentX] = 1;
-
-                result++;
-                moveCount--;
-                currentY--;
-
-                if (currentY < 0) {
-                    currentY = boardSize - 1;
-                }
-
-                if (visited[currentY][currentX] == 1) {
-                    isEnd = 0;
-                    break;
-                }
-            }
+            moveWay[0] = -1;
+            moveWay[1] = 0;
         }
-
-        else if (moveWay == 'D')
+        else if (board[currentY][currentX].moveWay == 'D')
         {
-            while (moveCount > 0) {
-                visited[currentY][currentX] = 1;
-
-                currentY++;
-                result++;
-                moveCount--;
-
-                if (currentY >= boardSize) {
-                    currentY = 0;
-                }
-
-                if (visited[currentY][currentX] == 1) {
-                    isEnd = 0;
-                    break;
-                }
-            }
+            moveWay[0] = 1;
+            moveWay[1] = 0;
         }
-
-        else if (moveWay == 'L')
+        else if (board[currentY][currentX].moveWay == 'R')
         {
-            while (moveCount > 0) {
-                visited[currentY][currentX] = 1;
-
-                currentX--;
-                result++;
-                moveCount--;
-
-                if (currentX < 0) {
-                    currentX = boardSize - 1;
-                }
-
-                if (visited[currentY][currentX] == 1) {
-                    isEnd = 0;
-                    break;
-                }   
-            }
+            moveWay[0] = 0;
+            moveWay[1] = 1;
         }
-
         else
         {
-            while (moveCount > 0) {
-                visited[currentY][currentX] = 1;
+            moveWay[0] = 0;
+            moveWay[1] = -1;
+        }
 
-                currentX++;
-                result++;
-                moveCount--;
+        while(moveCount > 0)
+        {
+            visited[currentY][currentX] = 1;
 
-                if (currentX >= boardSize) {
-                    currentX = 0;
-                }
+            currentY += moveWay[0];
+            currentX += moveWay[1];
 
-                if (visited[currentY][currentX] == 1) {
-                    isEnd = 0;
-                    break;
-                }
+            result++;
+            
+            moveCount--;
+
+            if (currentY >= boardSize) currentY = 0;
+            else if (currentY < 0) currentY = boardSize - 1;
+            else if (currentX >= boardSize) currentX = 0;
+            else if (currentX < 0) currentX = boardSize - 1;
+
+            if (visited[currentY][currentX] == 1)
+            {
+                isEnd = 0;
+                break;
             }
+            
         }
     }    
 
