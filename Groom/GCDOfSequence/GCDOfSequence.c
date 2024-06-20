@@ -50,8 +50,6 @@ int main(void)
 
 	}
 	
-	// printf("GCD : %d\n", currentGCD);
-
 	if (answer == INT_MAX) printf("-1\n");
 	else
 	{
