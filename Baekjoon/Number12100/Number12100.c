@@ -113,6 +113,7 @@ void moveLeft(int **block, int blockSize){
     printArray(block, blockSize, 1);
 }
 
+// moveRight 동작이 이상함 디버깅 해야 할듯
 void moveRight(int **block, int blockSize){
     for (int i = 0; i < blockSize; i++) {
         int lowIndex = blockSize - 1;
