@@ -152,7 +152,7 @@ void moveRight(int **block, int blockSize){
 }
 
 void moveOver(int **block, int blockSize){
-
+  
 }
 
 void moveUnder(int **block, int blockSize){
