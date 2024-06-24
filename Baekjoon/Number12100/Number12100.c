@@ -113,7 +113,6 @@ void moveLeft(int **block, int blockSize){
     printArray(block, blockSize, 1);
 }
 
-// moveRight 동작이 이상함 디버깅 해야 할듯
 void moveRight(int **block, int blockSize){
     for (int i = 0; i < blockSize; i++) {
         int lowIndex = blockSize - 1;
@@ -132,7 +131,7 @@ void moveRight(int **block, int blockSize){
             if (block[i][lowIndex] == 0) {
                 int findIndex = lowIndex - 1;
                 
-                while (findIndex < blockSize) {
+                while (findIndex >= 0) {
                     if (block[i][findIndex] != 0){
                         block[i][lowIndex] = block[i][findIndex];
                         block[i][findIndex] = 0;
@@ -152,11 +151,73 @@ void moveRight(int **block, int blockSize){
 }
 
 void moveOver(int **block, int blockSize){
-  
+      for (int i = 0; i < blockSize; i++) {
+        int lowIndex = blockSize - 1;
+        while (lowIndex > 0) {
+            if (block[i][lowIndex] == block[i][lowIndex - 1]){
+                    block[i][lowIndex] = block[i][lowIndex] + block[i][lowIndex - 1];
+                    block[i][lowIndex - 1] = 0;
+                    lowIndex--;
+            }
+
+            lowIndex--;
+        }
+        
+        lowIndex = blockSize - 1;
+        while (lowIndex > 0) {
+            if (block[i][lowIndex] == 0) {
+                int findIndex = lowIndex - 1;
+                
+                while (findIndex >= 0) {
+                    if (block[i][findIndex] != 0){
+                        block[i][lowIndex] = block[i][findIndex];
+                        block[i][findIndex] = 0;
+
+                        break;
+                    }     
+
+                    findIndex--;
+                }
+            }
+
+            lowIndex--;
+        }
+    }
 }
 
 void moveUnder(int **block, int blockSize){
+    for (int i = 0; i < blockSize; i++) {
+        int lowIndex = blockSize - 1;
+        while (lowIndex > 0) {
+            if (block[i][lowIndex] == block[i][lowIndex - 1]){
+                    block[i][lowIndex] = block[i][lowIndex] + block[i][lowIndex - 1];
+                    block[i][lowIndex - 1] = 0;
+                    lowIndex--;
+            }
 
+            lowIndex--;
+        }
+        
+        lowIndex = blockSize - 1;
+        while (lowIndex > 0) {
+            if (block[i][lowIndex] == 0) {
+                int findIndex = lowIndex - 1;
+                
+                while (findIndex >= 0) {
+                    if (block[i][findIndex] != 0){
+                        block[i][lowIndex] = block[i][findIndex];
+                        block[i][findIndex] = 0;
+
+                        break;
+                    }     
+
+                    findIndex--;
+                }
+            }
+
+            lowIndex--;
+        }
+    }
 }
 
 

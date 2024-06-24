@@ -1,0 +1,16 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/rock/Desktop/Programing/CWorkSpace/Baekjoon/Number12100/Number12100'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003434, symSize: 0x174 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _maxValue, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x67, offset: 0x67, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003434, symSize: 0x174 }
+  - { offsetInCU: 0xF1, offset: 0xF1, size: 0x8, addend: 0x0, symName: _bruteForce, symObjAddr: 0x174, symBinAddr: 0x1000035A8, symSize: 0x1C4 }
+  - { offsetInCU: 0x177, offset: 0x177, size: 0x8, addend: 0x0, symName: _free_2d_array, symObjAddr: 0x338, symBinAddr: 0x10000376C, symSize: 0x6C }
+  - { offsetInCU: 0x1C5, offset: 0x1C5, size: 0x8, addend: 0x0, symName: _moveLeft, symObjAddr: 0x3A4, symBinAddr: 0x1000037D8, symSize: 0x23C }
+  - { offsetInCU: 0x24B, offset: 0x24B, size: 0x8, addend: 0x0, symName: _copyArray, symObjAddr: 0x5E0, symBinAddr: 0x100003A14, symSize: 0xA8 }
+  - { offsetInCU: 0x2C3, offset: 0x2C3, size: 0x8, addend: 0x0, symName: _moveRight, symObjAddr: 0x688, symBinAddr: 0x100003ABC, symSize: 0x23C }
+  - { offsetInCU: 0x349, offset: 0x349, size: 0x8, addend: 0x0, symName: _moveOver, symObjAddr: 0x8C4, symBinAddr: 0x100003CF8, symSize: 0x14 }
+  - { offsetInCU: 0x37B, offset: 0x37B, size: 0x8, addend: 0x0, symName: _moveUnder, symObjAddr: 0x8D8, symBinAddr: 0x100003D0C, symSize: 0x14 }
+  - { offsetInCU: 0x3AD, offset: 0x3AD, size: 0x8, addend: 0x0, symName: _printArray, symObjAddr: 0x8EC, symBinAddr: 0x100003D20, symSize: 0x154 }
+...
