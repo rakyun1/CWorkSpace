@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+// queue를 사용해서 블럭의 이동을 구현해야 할 거 같음.
+// c에서는 queue를 직접 구현해서 사용해야 하므로 코드의 길이가 너무 길어져서
+// c가 아닌 자바로 구현하겠음
 int maxValue;
 
 void bruteForce(int **block, int blockSize,  int depth);
